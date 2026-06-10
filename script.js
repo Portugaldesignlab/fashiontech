@@ -321,6 +321,69 @@
   }
   addEventListener("scroll", onScroll, { passive: true });
 
+  /* ---------- spotlight: hover a card to view it center stage ---------- */
+
+  const spotlight = document.getElementById("spotlight");
+  const spotImg = document.getElementById("spotlightImg");
+  const spotTag = document.getElementById("spotlightTag");
+  const spotName = document.getElementById("spotlightName");
+  const artifacts = floaters.filter((el) => el.classList.contains("artifact"));
+  let spotOpenTimer, spotCloseTimer;
+
+  function openSpotlight(card) {
+    clearTimeout(spotCloseTimer);
+    const img = card.querySelector("img");
+    const src = img.currentSrc || img.src;
+    if (spotImg.src !== src) spotImg.src = src;
+    spotImg.alt = img.alt;
+    spotTag.textContent = card.querySelector(".artifact__tag").textContent;
+    spotName.textContent = card.querySelector(".artifact__name").textContent;
+    spotlight.style.setProperty("--ac", getComputedStyle(card).getPropertyValue("--ac"));
+    artifacts.forEach((c) => c.classList.toggle("is-active", c === card));
+    hero.classList.add("is-spotlit");
+    spotlight.classList.add("is-open");
+    spotlight.setAttribute("aria-hidden", "false");
+  }
+
+  function closeSpotlight() {
+    artifacts.forEach((c) => c.classList.remove("is-active"));
+    hero.classList.remove("is-spotlit");
+    spotlight.classList.remove("is-open");
+    spotlight.setAttribute("aria-hidden", "true");
+  }
+
+  artifacts.forEach((card) => {
+    card.tabIndex = 0; // keyboard users can spotlight too
+
+    if (isCoarse) {
+      card.addEventListener("click", () => {
+        card.classList.contains("is-active") ? closeSpotlight() : openSpotlight(card);
+      });
+    } else {
+      /* small intent delays so sweeping the cursor across cards doesn't flicker */
+      card.addEventListener("pointerenter", () => {
+        clearTimeout(spotOpenTimer);
+        clearTimeout(spotCloseTimer);
+        spotOpenTimer = setTimeout(() => openSpotlight(card), 140);
+      });
+      card.addEventListener("pointerleave", () => {
+        clearTimeout(spotOpenTimer);
+        spotCloseTimer = setTimeout(closeSpotlight, 130);
+      });
+      card.addEventListener("focus", () => openSpotlight(card));
+      card.addEventListener("blur", closeSpotlight);
+    }
+  });
+
+  if (isCoarse) {
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".artifact")) closeSpotlight();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeSpotlight();
+  });
+
   const observer = new IntersectionObserver(
     (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("is-visible")),
     { threshold: 0.2 }
