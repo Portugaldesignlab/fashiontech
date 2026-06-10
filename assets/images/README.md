@@ -1,16 +1,17 @@
 # Hero artifact images
 
-Each hero card loads `artifact-0X.jpg` and, if the photo isn't present,
-falls back to the hand-drawn `artifact-0X.svg` interpretation that ships
-in this folder. Drop the five campaign photos here with these exact names
-to replace the illustrations:
+The five campaign photos ship as web-optimized `artifact-0X.jpg`
+(900px wide, recovered from the original uploads). Each hero card loads
+the JPG and, if it's ever missing, falls back to the hand-drawn
+`artifact-0X.svg` interpretation in this folder.
 
 | File | Image | Hero card |
 |---|---|---|
-| `artifact-01.jpg` | Grey jersey stiletto boots with red/teal/marigold embroidered daisies | Product Design · Knit Couture 01 |
-| `artifact-02.jpg` | Crochet heels with wavy teal/coral/mustard/mint stripes and taupe trim | AI-Powered Creativity · Generative Pattern Study |
+| `artifact-01.jpg` | Teal knit boot with red splash appliqués and crochet patches | Product Design · Knit Couture 01 |
+| `artifact-02.jpg` | Psychedelic concentric-circle knit sock boot in orange/pink/teal | AI-Powered Creativity · Generative Pattern Study |
 | `artifact-03.jpg` | Teal crochet sock-heel with rose lilies, coral fronds and sage foliage | R&D · Living Surfaces |
-| `artifact-04.jpg` | Cream knit peep-toe boots with rose blooms, slate-blue chain leaves, gold buds | Branding · Heritage, Reimagined |
+| `artifact-04.jpg` | Cream knit boots with rose blooms, slate-blue chain leaves, gold buds | Branding · Heritage, Reimagined |
 | `artifact-05.jpg` | Steel-blue crochet peep-toe with flat sixties flowers in orange/cream/purple/red | Future Concepts · Retro-Future Bloom |
 
-Recommended: JPG, ~1200px on the long edge, 3:4 crops.
+To swap any artwork, replace the JPG keeping the same name (portrait
+crops around 3:4 to 9:16 work best — cards crop with `object-fit: cover`).
