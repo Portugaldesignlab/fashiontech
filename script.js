@@ -52,6 +52,19 @@
     { rx: 0.56, ry: 0.205, tilt: -0.06, speed: 0.0001, count: 11 },
   ];
 
+  /* palette sampled from the artifact imagery */
+  const NODE_TONES = [
+    { rgb: "214, 220, 232", glow: false, w: 0.5 },  // silver
+    { rgb: "233, 201, 124", glow: true, w: 0.22 },  // gold
+    { rgb: "226, 93, 60", glow: true, w: 0.16 },    // coral
+    { rgb: "96, 186, 196", glow: true, w: 0.12 },   // teal
+  ];
+  function pickTone() {
+    let r = Math.random();
+    for (const t of NODE_TONES) { if ((r -= t.w) <= 0) return t; }
+    return NODE_TONES[0];
+  }
+
   const nodes = [];
   RINGS.forEach((ring, ri) => {
     for (let i = 0; i < ring.count; i++) {
@@ -60,7 +73,7 @@
         ri,
         phase: (i / ring.count) * Math.PI * 2 + ri * 0.7,
         size: 1.2 + Math.random() * 1.8,
-        gold: Math.random() < 0.3,
+        tone: pickTone(),
       });
     }
   });
@@ -88,6 +101,12 @@
 
   /* Ambient particles with depth-of-field: deeper = blurrier, slower */
 
+  const DUST_TINTS = [
+    "200, 208, 224", "200, 208, 224", "200, 208, 224", // silver-weighted
+    "233, 201, 124", "233, 201, 124",                   // gold
+    "224, 93, 66", "86, 178, 188", "232, 122, 160",     // coral · teal · rose
+  ];
+
   const PARTICLE_COUNT = isCoarse ? 42 : 110;
   const particles = Array.from({ length: PARTICLE_COUNT }, () => spawnParticle(true));
 
@@ -101,11 +120,18 @@
       vy: -(0.06 + depth * 0.22),
       vx: (Math.random() - 0.5) * 0.08,
       tw: Math.random() * Math.PI * 2,
-      gold: Math.random() < 0.22,
+      tint: DUST_TINTS[(Math.random() * DUST_TINTS.length) | 0],
     };
   }
 
   /* Shooting light-trails: occasionally a streak travels between two nodes */
+
+  const TRAIL_HUES = [
+    "243, 224, 171", // gold
+    "240, 130, 100", // coral
+    "120, 205, 214", // teal
+    "240, 158, 188", // rose
+  ];
 
   const trails = [];
   function maybeSpawnTrail(t) {
@@ -113,7 +139,8 @@
       const a = nodes[(Math.random() * nodes.length) | 0];
       let b = nodes[(Math.random() * nodes.length) | 0];
       if (a === b) b = nodes[(nodes.indexOf(a) + 5) % nodes.length];
-      trails.push({ a, b, born: t, life: 1600 + Math.random() * 1200 });
+      const hue = TRAIL_HUES[(Math.random() * TRAIL_HUES.length) | 0];
+      trails.push({ a, b, born: t, life: 1600 + Math.random() * 1200, hue });
     }
   }
 
@@ -179,8 +206,8 @@
       const tx = A.x + (B.x - A.x) * tail, ty = A.y + (B.y - A.y) * tail;
       const fade = Math.sin(Math.min(prog, 1) * Math.PI);
       const grad = ctx.createLinearGradient(tx, ty, hx, hy);
-      grad.addColorStop(0, "rgba(233, 201, 124, 0)");
-      grad.addColorStop(1, `rgba(243, 224, 171, ${0.8 * fade})`);
+      grad.addColorStop(0, `rgba(${tr.hue}, 0)`);
+      grad.addColorStop(1, `rgba(${tr.hue}, ${0.8 * fade})`);
       ctx.strokeStyle = grad;
       ctx.lineWidth = 1.2;
       ctx.beginPath();
@@ -199,12 +226,11 @@
     for (const { n, p } of proj) {
       const r = n.size * p.scale;
       const alpha = 0.25 + p.z * 0.65;
-      if (n.gold) {
-        ctx.fillStyle = `rgba(233, 201, 124, ${alpha})`;
-        ctx.shadowColor = "rgba(233, 201, 124, 0.8)";
+      ctx.fillStyle = `rgba(${n.tone.rgb}, ${alpha})`;
+      if (n.tone.glow) {
+        ctx.shadowColor = `rgba(${n.tone.rgb}, 0.8)`;
         ctx.shadowBlur = 8 * p.z;
       } else {
-        ctx.fillStyle = `rgba(214, 220, 232, ${alpha})`;
         ctx.shadowBlur = 0;
       }
       ctx.beginPath();
@@ -221,9 +247,7 @@
       if (pt.y < -12 || pt.x < -12 || pt.x > W + 12) particles[i] = spawnParticle(false);
       const twinkle = 0.5 + Math.sin(t * 0.002 + pt.tw) * 0.5;
       const a = (0.06 + pt.depth * 0.2) * twinkle;
-      ctx.fillStyle = pt.gold
-        ? `rgba(233, 201, 124, ${a})`
-        : `rgba(200, 208, 224, ${a})`;
+      ctx.fillStyle = `rgba(${pt.tint}, ${a})`;
       /* shallow depth: near particles render as soft discs */
       const blur = (1 - pt.depth) * 3;
       ctx.beginPath();
