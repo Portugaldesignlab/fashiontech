@@ -1,84 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
-  <!-- Retro-Future Bloom — steel-blue crochet, flat sixties petals, gold piping -->
+  <!-- Knit Couture 01 — grey heather jersey, embroidered daisies -->
   <defs>
-    <radialGradient id="bg" cx="34%" cy="24%" r="120%">
-      <stop offset="0" stop-color="#52869e"/><stop offset="1" stop-color="#39657f"/>
+    <radialGradient id="bg" cx="32%" cy="22%" r="120%">
+      <stop offset="0" stop-color="#a6acb4"/><stop offset="1" stop-color="#6e757f"/>
     </radialGradient>
-    <pattern id="k" width="9" height="6" patternUnits="userSpaceOnUse">
-      <path d="M0 6 L4.5 1 L9 6" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.4"/>
+    <pattern id="k" width="10" height="7" patternUnits="userSpaceOnUse">
+      <path d="M0 7 L5 1 L10 7" fill="none" stroke="rgba(255,255,255,.13)" stroke-width="1.5"/>
     </pattern>
-    <g id="r6">
-      <ellipse cx="0" cy="-24" rx="15" ry="20"/>
-      <ellipse cx="0" cy="-24" rx="15" ry="20" transform="rotate(60)"/>
-      <ellipse cx="0" cy="-24" rx="15" ry="20" transform="rotate(120)"/>
-      <ellipse cx="0" cy="-24" rx="15" ry="20" transform="rotate(180)"/>
-      <ellipse cx="0" cy="-24" rx="15" ry="20" transform="rotate(240)"/>
-      <ellipse cx="0" cy="-24" rx="15" ry="20" transform="rotate(300)"/>
+    <g id="d12">
+      <ellipse cx="0" cy="-32" rx="8" ry="28"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(30)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(150)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(210)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(300)"/>
+      <ellipse cx="0" cy="-32" rx="8" ry="28" transform="rotate(330)"/>
     </g>
-    <g id="burst">
-      <ellipse cx="0" cy="-22" rx="4" ry="18"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(30)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(60)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(90)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(120)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(150)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(180)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(210)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(240)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(270)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(300)"/>
-      <ellipse cx="0" cy="-22" rx="4" ry="18" transform="rotate(330)"/>
-    </g>
+    <g id="leaf"><ellipse cx="0" cy="-15" rx="6" ry="15"/></g>
   </defs>
 
   <rect width="600" height="800" fill="url(#bg)"/>
 
-  <!-- sage crochet patches -->
-  <g fill="#8fae9b" opacity=".5">
-    <ellipse cx="140" cy="160" rx="120" ry="90"/>
-    <ellipse cx="480" cy="620" rx="130" ry="100"/>
-    <ellipse cx="60" cy="560" rx="90" ry="110"/>
+  <!-- stems -->
+  <g stroke="#55672c" stroke-width="7" fill="none" stroke-linecap="round">
+    <path d="M150 260 q30 60 10 130"/>
+    <path d="M420 220 q-20 70 10 130"/>
+    <path d="M250 500 q40 50 20 120"/>
+    <path d="M480 430 q-30 60 -10 130"/>
+    <path d="M90 560 q20 40 0 90"/>
+  </g>
+  <g fill="#5a6e2e">
+    <use href="#leaf" transform="translate(165,320) rotate(55)"/>
+    <use href="#leaf" transform="translate(145,360) rotate(-50)"/>
+    <use href="#leaf" transform="translate(410,290) rotate(60)"/>
+    <use href="#leaf" transform="translate(425,320) rotate(-55)"/>
+    <use href="#leaf" transform="translate(275,560) rotate(50)"/>
+    <use href="#leaf" transform="translate(255,600) rotate(-55)"/>
+    <use href="#leaf" transform="translate(465,500) rotate(55)"/>
+    <use href="#leaf" transform="translate(95,610) rotate(-50)"/>
+    <use href="#leaf" transform="translate(540,330) rotate(30)"/>
+    <use href="#leaf" transform="translate(60,210) rotate(-35)"/>
   </g>
 
-  <!-- sixties blooms -->
-  <g fill="#e8821e"><use href="#r6" transform="translate(380,420) scale(1.6)"/></g>
-  <circle cx="380" cy="420" r="18" fill="#9fb48a"/>
+  <!-- daisies -->
+  <g fill="#d8402c"><use href="#d12" transform="translate(170,190) scale(1.5)"/></g>
+  <g fill="#246b7c"><use href="#d12" transform="translate(400,150) scale(1.05)"/></g>
+  <g fill="#e7a51b"><use href="#d12" transform="translate(480,330) scale(1.15)"/></g>
+  <g fill="#e2631f"><use href="#d12" transform="translate(140,420) scale(1.35)"/></g>
+  <g fill="#c0252b"><use href="#d12" transform="translate(350,400) scale(1)"/></g>
+  <g fill="#246b7c"><use href="#d12" transform="translate(270,290) scale(.7)"/></g>
+  <g fill="#d8402c"><use href="#d12" transform="translate(450,610) scale(1.3)"/></g>
+  <g fill="#e2631f"><use href="#d12" transform="translate(210,650) scale(.85)"/></g>
+  <g fill="#c76db3"><use href="#d12" transform="translate(320,560) scale(.5)"/></g>
 
-  <g fill="#e9e4d2"><use href="#r6" transform="translate(240,560) scale(1.8)"/></g>
-  <g fill="#233a72"><use href="#r6" transform="translate(240,560) scale(.8)"/></g>
-  <circle cx="240" cy="560" r="12" fill="#9fb48a"/>
-
-  <g fill="#8e5f9e"><use href="#r6" transform="translate(160,300) scale(1.3)"/></g>
-  <circle cx="160" cy="300" r="14" fill="#e8821e"/>
-
-  <g fill="#e8821e"><use href="#r6" transform="translate(480,230) scale(1.05)"/></g>
-  <circle cx="480" cy="230" r="12" fill="#9fb48a"/>
-
-  <g fill="#c8302a"><use href="#burst" transform="translate(310,180) scale(1.1)"/></g>
-  <circle cx="310" cy="180" r="9" fill="#9fb48a"/>
-
-  <g fill="#8e5f9e"><use href="#r6" transform="translate(490,720) scale(.85)"/></g>
-  <circle cx="490" cy="720" r="9" fill="#e8821e"/>
-
-  <g fill="#e8821e"><use href="#r6" transform="translate(120,690) scale(.95)"/></g>
-  <circle cx="120" cy="690" r="10" fill="#c8302a"/>
-
-  <g fill="#e9e4d2"><use href="#r6" transform="translate(70,430) scale(.8)"/></g>
-  <g fill="#233a72"><use href="#r6" transform="translate(70,430) scale(.38)"/></g>
-
-  <g fill="#c8302a"><use href="#burst" transform="translate(540,470) scale(.8)"/></g>
-  <circle cx="540" cy="470" r="7" fill="#9fb48a"/>
-
-  <!-- knot dots -->
-  <g fill="#e8821e">
-    <circle cx="300" cy="320" r="9"/><circle cx="430" cy="560" r="8"/><circle cx="200" cy="80" r="8"/>
+  <!-- sparkle centers -->
+  <g fill="#eceef0" stroke="#c8ccd2" stroke-width="2">
+    <circle cx="170" cy="190" r="20"/><circle cx="400" cy="150" r="14"/>
+    <circle cx="480" cy="330" r="15"/><circle cx="140" cy="420" r="18"/>
+    <circle cx="350" cy="400" r="13"/><circle cx="270" cy="290" r="9"/>
+    <circle cx="450" cy="610" r="17"/><circle cx="210" cy="650" r="11"/>
   </g>
-  <g fill="#c8302a">
-    <circle cx="60" cy="120" r="7"/><circle cx="540" cy="100" r="7"/><circle cx="330" cy="720" r="7"/>
-  </g>
+  <circle cx="320" cy="560" r="6" fill="#e7a51b"/>
 
-  <!-- gold piping -->
-  <path d="M20 778 Q300 742 580 778" stroke="#c9a44e" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <!-- berries and french-knot dots -->
+  <g fill="#e7a51b">
+    <circle cx="84" cy="288" r="7"/><circle cx="98" cy="304" r="7"/>
+    <circle cx="82" cy="318" r="7"/><circle cx="104" cy="322" r="7"/>
+  </g>
+  <g fill="#c0252b">
+    <circle cx="520" cy="210" r="7"/><circle cx="320" cy="710" r="7"/>
+    <circle cx="110" cy="560" r="7"/><circle cx="560" cy="470" r="7"/>
+    <circle cx="60" cy="690" r="7"/><circle cx="250" cy="80" r="7"/>
+    <circle cx="60" cy="120" r="7"/>
+  </g>
 
   <rect width="600" height="800" fill="url(#k)"/>
 </svg>
