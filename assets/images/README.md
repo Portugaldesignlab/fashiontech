@@ -1,18 +1,16 @@
 # Hero artifact images
 
-The page loads the web-optimized `artifact-0X.jpg` (900px, ~220KB),
-generated from the original `artifact-0X.png` campaign uploads (kept in
-git history; any still present in this folder are safe to delete). If a
-JPG is ever missing, the card falls back to the hand-drawn
-`artifact-0X.svg` interpretation.
+The hero loads the five web-optimized campaign photos directly:
 
-| Slot | Image | Hero card |
+| File | Image | Hero card |
 |---|---|---|
-| `artifact-01` | Cream knit boot with rose blooms, slate-blue chain leaves, gold buds | Branding · Heritage, Reimagined |
-| `artifact-02` | Steel-blue crochet peep-toe with flat sixties flowers | Future Concepts · Retro-Future Bloom |
-| `artifact-03` | Teal knit boot with red splash appliqués and crochet patches | R&D · Material Alchemy |
-| `artifact-04` | Psychedelic concentric-circle knit sock boot | AI-Powered Creativity · Generative Pattern Study |
-| `artifact-05` | Grey jersey boot embroidered with red, teal and marigold daisies | Product Design · Knit Couture 01 |
+| `artifact-01.jpg` | Cream knit boot with rose blooms, slate-blue chain leaves, gold buds | Branding · Heritage, Reimagined |
+| `artifact-02.jpg` | Steel-blue crochet peep-toe with flat sixties flowers | Future Concepts · Retro-Future Bloom |
+| `artifact-03.jpg` | Teal knit boot with red splash appliqués and crochet patches | R&D · Material Alchemy |
+| `artifact-04.jpg` | Psychedelic concentric-circle knit sock boot | AI-Powered Creativity · Generative Pattern Study |
+| `artifact-05.jpg` | Grey jersey boot embroidered with red, teal and marigold daisies | Product Design · Knit Couture 01 |
 
-To swap artwork: replace the PNG, regenerate the JPG at the same name
-(portrait crops; cards crop with `object-fit: cover`).
+All are 900px-wide progressive JPGs (~220KB) generated from the original
+uploads, which remain available in git history. To swap artwork, replace
+the JPG keeping the same name — portrait crops work best, the cards crop
+with `object-fit: cover`.
