@@ -1,9 +1,10 @@
 # Hero artifact images
 
-`artifact-0X.png` are the original campaign uploads (source of truth for
-slot order). The page loads the web-optimized `artifact-0X.jpg` (900px,
-~220KB) generated from them, and falls back to the hand-drawn
-`artifact-0X.svg` interpretation if a JPG is ever missing.
+The page loads the web-optimized `artifact-0X.jpg` (900px, ~220KB),
+generated from the original `artifact-0X.png` campaign uploads (kept in
+git history; any still present in this folder are safe to delete). If a
+JPG is ever missing, the card falls back to the hand-drawn
+`artifact-0X.svg` interpretation.
 
 | Slot | Image | Hero card |
 |---|---|---|
